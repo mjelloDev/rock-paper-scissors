@@ -12,3 +12,12 @@ function getComputerChoice() {
       break;
   }
 }
+
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    alert("It's a tie! Good luck next round");
+  }
+}
+
+const playerSelection = getPlayerChoice();
+const computerSelection = getComputerChoice();
