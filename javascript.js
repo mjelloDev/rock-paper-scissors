@@ -1,6 +1,14 @@
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3);
-  if (choice === 0) "rock";
-  else if (choice === 1) "paper";
-  else "scissors";
+  switch (choice) {
+    case 0:
+      return "Rock";
+      break;
+    case 1:
+      return "Paper";
+      break;
+    default:
+      return "Scissors";
+      break;
+  }
 }
