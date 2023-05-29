@@ -12,17 +12,24 @@ function getComputerChoice() {
       break;
   }
 }
+console.log(getComputerChoice());
 
 function getPlayerChoice() {
   let player = prompt("What will you play?");
   return player.toLowerCase();
 }
-
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
+console.log(getPlayerChoice());
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     alert("It's a tie! Good luck next round");
+  } else if (playerSelection === "paper" && computerSelection === "rock") {
+    alert("Paper beat rock! You win! Wow");
+  } else if (playerSelection === "scissors" && computerSelection === "rock") {
+    alert("Rock kill you! Poor scissor, so weak!");
   }
 }
+
+const playerSelection = getPlayerChoice();
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
