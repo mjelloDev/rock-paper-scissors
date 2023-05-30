@@ -14,6 +14,10 @@ function getComputerChoice() {
 }
 console.log(getComputerChoice());
 
+const playerSelection = getPlayerChoice();
+const computerSelection = getComputerChoice();
+// console.log(playRound(playerSelection, computerSelection));
+
 function getPlayerChoice() {
   let playerInput = prompt("What will you play?");
   let getPlayerChoice = playerInput.toLowerCase();
@@ -31,16 +35,13 @@ function playRound(playerSelection, computerSelection) {
   ) {
     alert("You win!");
   } else if (
-    (playerSelection === "paper" && computerSelection === "scissors") ||
     (playerSelection === "rock" && computerSelection === "paper") ||
+    (playerSelection === "paper" && computerSelection === "scissors") ||
     (playerSelection === "scissors" && computerSelection === "rock")
-  )
+  ) {
     alert("You lose!");
-  else {
+  } else {
     alert("I break!");
   }
 }
-
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+// TODO: Fix the playRound function
