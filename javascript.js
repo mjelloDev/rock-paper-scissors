@@ -15,18 +15,15 @@ function getComputerChoice() {
 console.log(getComputerChoice());
 
 function getPlayerChoice() {
-  let player = prompt("What will you play?");
-  return player.toLowerCase();
+  let playerInput = prompt("What will you play?");
+  let getPlayerChoice = playerInput.toLowerCase();
+  console.log(getPlayerChoice);
+  return getPlayerChoice;
 }
-console.log(getPlayerChoice());
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     alert("It's a tie! Good luck next round");
-  } else if (playerSelection === "paper" && computerSelection === "rock") {
-    alert("Paper beat rock! You win! Wow");
-  } else if (playerSelection === "scissors" && computerSelection === "rock") {
-    alert("Rock kill you! Poor scissor, so weak!");
   }
 }
 
