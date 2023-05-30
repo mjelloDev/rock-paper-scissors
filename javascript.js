@@ -24,6 +24,20 @@ function getPlayerChoice() {
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     alert("It's a tie! Good luck next round");
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "sciccors" && computerSelection === "paper")
+  ) {
+    alert("You win!");
+  } else if (
+    (playerSelection === "paper" && computerSelection === "scissors") ||
+    (playerSelection === "rock" && computerSelection === "paper") ||
+    (playerSelection === "scissors" && computerSelection === "rock")
+  )
+    alert("You lose!");
+  else {
+    alert("I break!");
   }
 }
 
