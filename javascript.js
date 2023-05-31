@@ -3,12 +3,14 @@ const computerText = document.querySelector("#computerText");
 const resultText = document.querySelector("#resultText");
 const choiceBtns = document.querySelectorAll(".choiceBtn");
 const playerScoreText = document.querySelector("#playerScoreText");
+const tieScoreText = document.querySelector("#tieScoreText");
 const computerScoreText = document.querySelector("#computerScoreText");
 
 let player;
 let computer;
 let result;
 let playerScore = 0;
+let tieScore = 0;
 let computerScore = 0;
 let roundCount = 0;
 
@@ -18,18 +20,17 @@ choiceBtns.forEach((button) =>
     getComputerChoice();
     playerText.textContent = `Player: ${player}`;
     computerText.textContent = `Computer: ${computer}`;
-    // resultText.textContent = playRound();
-    // playerScoreText.textContent = `Player: ${playerScore}`;
-    // computerScoreText.textContent = `Computer: ${computerScore}`;
     const roundResult = playRound();
     resultText.textContent = roundResult.result;
     playerScore = roundResult.playerScore;
+    tieScore = roundResult.tieScore;
     computerScore = roundResult.computerScore;
     playerScoreText.textContent = `Player: ${playerScore}`;
+    tieScoreText.textContent = `Tie: ${tieScore}`;
     computerScoreText.textContent = `Computer: ${computerScore}`;
 
     roundCount++;
-    if (roundCount === 5) {
+    if (roundCount === 10) {
       endGame();
     }
   })
@@ -50,33 +51,17 @@ function getComputerChoice() {
   }
 }
 
-// function playRound() {
-//   if (player === computer) {
-//     return "It's a tie! Good luck next round";
-//   } else if (
-//     (player == "Rock" && computer == "Scissors") ||
-//     (player == "Paper" && computer == "Rock") ||
-//     (player == "Scissors" && computer == "Paper")
-//   ) {
-//     return "You Win!";
-//   } else if (
-//     (player == "Rock" && computer == "Paper") ||
-//     (player == "Paper" && computer == "Scissors") ||
-//     (player == "Scissors" && computer == "Rock")
-//   ) {
-//     return "You Lose!";
-//   }
-// }
-
 function playRound() {
   let roundResult = {
     result: "",
     playerScore: playerScore,
+    tieScore: tieScore,
     computerScore: computerScore,
   };
 
   if (player === computer) {
     roundResult.result = "It's a tie! Good luck next round";
+    roundResult.tieScore++;
   } else if (
     (player == "Rock" && computer == "Scissors") ||
     (player == "Paper" && computer == "Rock") ||
@@ -99,13 +84,15 @@ function playRound() {
 function endGame() {
   roundCount = 0;
   playerScore = 0;
+  tieScore = 0;
   computerScore = 0;
 
   choiceBtns.forEach((button) => button.removeEventListener("click", () => {}));
 
-  window.alert("Game Over!");
+  alert("Game Over!");
 
   // Reset text content
   playerScoreText.textContent = "Player: 0";
+  tieScoreText.textContent = "Tie: 0";
   computerScoreText.textContent = "Computer: 0";
 }
