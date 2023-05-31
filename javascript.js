@@ -3,6 +3,11 @@
 // 3. Create function to compare player choice and computer choice
 // 4. Make a loop while the score is lower than 5 to continue game
 
+const playerText = document.querySelector("#playerText");
+const computerText = document.querySelector("#computerText");
+const resultText = document.querySelector("#resultText");
+const choiceBtn = document.querySelector(".choiceBtn");
+
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3);
   switch (choice) {
