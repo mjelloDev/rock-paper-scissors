@@ -73,3 +73,10 @@ button {
   font-weight: 900;
   font-family: monospace, sans-serif;
 }
+
+.score {
+  color: #454839;
+  display: flex;
+  gap: 10em;
+  justify-content: center;
+}

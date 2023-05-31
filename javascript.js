@@ -1,17 +1,16 @@
-// 1. Create function to get computer choice and assign it to string rock/paper/scissors
-// 2. Create function to get player choice from the button they choose
-// 3. Create function to compare player choice and computer choice
-// 4. Make a loop while the score is lower than 5 to continue game
-
 const playerText = document.querySelector("#playerText");
 const computerText = document.querySelector("#computerText");
 const resultText = document.querySelector("#resultText");
 const choiceBtns = document.querySelectorAll(".choiceBtn");
+const playerScoreText = document.querySelector("#playerScoreText");
+const computerScoreText = document.querySelector("#computerScoreText");
+
 let player;
 let computer;
 let result;
 let playerScore = 0;
 let computerScore = 0;
+let roundCount = 0;
 
 choiceBtns.forEach((button) =>
   button.addEventListener("click", () => {
@@ -19,7 +18,20 @@ choiceBtns.forEach((button) =>
     getComputerChoice();
     playerText.textContent = `Player: ${player}`;
     computerText.textContent = `Computer: ${computer}`;
-    resultText.textContent = playRound();
+    // resultText.textContent = playRound();
+    // playerScoreText.textContent = `Player: ${playerScore}`;
+    // computerScoreText.textContent = `Computer: ${computerScore}`;
+    const roundResult = playRound();
+    resultText.textContent = roundResult.result;
+    playerScore = roundResult.playerScore;
+    computerScore = roundResult.computerScore;
+    playerScoreText.textContent = `Player: ${playerScore}`;
+    computerScoreText.textContent = `Computer: ${computerScore}`;
+
+    roundCount++;
+    if (roundCount === 5) {
+      endGame();
+    }
   })
 );
 
@@ -38,28 +50,62 @@ function getComputerChoice() {
   }
 }
 
+// function playRound() {
+//   if (player === computer) {
+//     return "It's a tie! Good luck next round";
+//   } else if (
+//     (player == "Rock" && computer == "Scissors") ||
+//     (player == "Paper" && computer == "Rock") ||
+//     (player == "Scissors" && computer == "Paper")
+//   ) {
+//     return "You Win!";
+//   } else if (
+//     (player == "Rock" && computer == "Paper") ||
+//     (player == "Paper" && computer == "Scissors") ||
+//     (player == "Scissors" && computer == "Rock")
+//   ) {
+//     return "You Lose!";
+//   }
+// }
+
 function playRound() {
+  let roundResult = {
+    result: "",
+    playerScore: playerScore,
+    computerScore: computerScore,
+  };
+
   if (player === computer) {
-    return "It's a tie! Good luck next round";
+    roundResult.result = "It's a tie! Good luck next round";
   } else if (
     (player == "Rock" && computer == "Scissors") ||
     (player == "Paper" && computer == "Rock") ||
     (player == "Scissors" && computer == "Paper")
   ) {
-    playerScore += 1;
-    return "You Win!";
+    roundResult.result = "You Win!";
+    roundResult.playerScore++; // Increment playerScore
   } else if (
     (player == "Rock" && computer == "Paper") ||
     (player == "Paper" && computer == "Scissors") ||
     (player == "Scissors" && computer == "Rock")
   ) {
-    computerScore += 1;
-    return "You Lose!";
+    roundResult.result = "You Lose!";
+    roundResult.computerScore++; // Increment computerScore
   }
+
+  return roundResult;
 }
 
-// for (let gameScore = 0; gameScore < 5; gameScore++) {
-//   playRound();
-// }
+function endGame() {
+  roundCount = 0;
+  playerScore = 0;
+  computerScore = 0;
 
-// TODO: Make a 5-round game function
+  choiceBtns.forEach((button) => button.removeEventListener("click", () => {}));
+
+  window.alert("Game Over!");
+
+  // Reset text content
+  playerScoreText.textContent = "Player: 0";
+  computerScoreText.textContent = "Computer: 0";
+}
