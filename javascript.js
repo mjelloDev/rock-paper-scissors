@@ -10,6 +10,8 @@ const choiceBtns = document.querySelectorAll(".choiceBtn");
 let player;
 let computer;
 let result;
+let playerScore = 0;
+let computerScore = 0;
 
 choiceBtns.forEach((button) =>
   button.addEventListener("click", () => {
@@ -35,45 +37,29 @@ function getComputerChoice() {
       break;
   }
 }
-console.log(getComputerChoice());
-
-// function playRound() {
-//   let playerScore = 0;
-//   let computerScore = 0;
-//   while (playerScore + computerScore < 5) {
-//     if (player === computer) {
-//       return "It's a tie! Good luck next round";
-//     } else if (computer == "Rock") {
-//       return player == "Paper" ? "You Win!" : "You lose!";
-//     } else if (computer == "Paper") {
-//       return player == "Scissors" ? "You win!" : "You lose!";
-//     } else if (computer == "Scissors") {
-//       return player == "Rock" ? "You win!" : "You lose!";
-//     }
-//   }
-// }
-let playerScore = 0;
-let computerScore = 0;
-let gameScore = playerScore + computerScore;
 
 function playRound() {
-  while (gameScore < 5) {
-    if (player === computer) {
-      return "It's a tie! Good luck next round";
-    } else if (
-      (player == "Rock" && computer == "Scissors") ||
-      (player == "Paper" && computer == "Rock") ||
-      (player == "Scissors" && computer == "Paper")
-    ) {
-      playerScore += 1;
-      return "You Win!";
-    } else if (
-      (player == "Rock" && computer == "Paper") ||
-      (player == "Paper" && computer == "Scissors") ||
-      (player == "Scissors" && computer == "Rock")
-    ) {
-      computerScore += 1;
-      return "You Lose!";
-    }
+  if (player === computer) {
+    return "It's a tie! Good luck next round";
+  } else if (
+    (player == "Rock" && computer == "Scissors") ||
+    (player == "Paper" && computer == "Rock") ||
+    (player == "Scissors" && computer == "Paper")
+  ) {
+    playerScore += 1;
+    return "You Win!";
+  } else if (
+    (player == "Rock" && computer == "Paper") ||
+    (player == "Paper" && computer == "Scissors") ||
+    (player == "Scissors" && computer == "Rock")
+  ) {
+    computerScore += 1;
+    return "You Lose!";
   }
 }
+
+// for (let gameScore = 0; gameScore < 5; gameScore++) {
+//   playRound();
+// }
+
+// TODO: Make a 5-round game function
