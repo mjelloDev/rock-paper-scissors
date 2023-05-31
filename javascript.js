@@ -6,53 +6,74 @@
 const playerText = document.querySelector("#playerText");
 const computerText = document.querySelector("#computerText");
 const resultText = document.querySelector("#resultText");
-const choiceBtn = document.querySelector(".choiceBtn");
+const choiceBtns = document.querySelectorAll(".choiceBtn");
+let player;
+let computer;
+let result;
+
+choiceBtns.forEach((button) =>
+  button.addEventListener("click", () => {
+    player = button.textContent;
+    getComputerChoice();
+    playerText.textContent = `Player: ${player}`;
+    computerText.textContent = `Computer: ${computer}`;
+    resultText.textContent = playRound();
+  })
+);
 
 function getComputerChoice() {
-  let choice = Math.floor(Math.random() * 3);
+  const choice = Math.floor(Math.random() * 3);
   switch (choice) {
     case 0:
-      return "rock";
+      computer = "Rock";
       break;
     case 1:
-      return "paper";
+      computer = "Paper";
       break;
     case 2:
-      return "scissors";
+      computer = "Scissors";
       break;
   }
 }
 console.log(getComputerChoice());
 
-// console.log(playRound(playerSelection, computerSelection));
-
-// function getPlayerChoice() {
-//   let playerInput = prompt("What will you play?");
-//   let getPlayerChoice = playerInput.toLowerCase();
-//   console.log(getPlayerChoice);
-//   return getPlayerChoice;
+// function playRound() {
+//   let playerScore = 0;
+//   let computerScore = 0;
+//   while (playerScore + computerScore < 5) {
+//     if (player === computer) {
+//       return "It's a tie! Good luck next round";
+//     } else if (computer == "Rock") {
+//       return player == "Paper" ? "You Win!" : "You lose!";
+//     } else if (computer == "Paper") {
+//       return player == "Scissors" ? "You win!" : "You lose!";
+//     } else if (computer == "Scissors") {
+//       return player == "Rock" ? "You win!" : "You lose!";
+//     }
+//   }
 // }
+let playerScore = 0;
+let computerScore = 0;
+let gameScore = playerScore + computerScore;
 
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
-    return "It's a tie! Good luck next round";
-  } else if (
-    (playerSelection === "rock" && computerSelection === "scissors") ||
-    (playerSelection === "paper" && computerSelection === "rock") ||
-    (playerSelection === "sciccors" && computerSelection === "paper")
-  ) {
-    return "You win!";
-  } else if (
-    (playerSelection === "rock" && computerSelection === "paper") ||
-    (playerSelection === "paper" && computerSelection === "scissors") ||
-    (playerSelection === "scissors" && computerSelection === "rock")
-  ) {
-    return "You lose!";
-  } else {
-    return "I break!";
+function playRound() {
+  while (gameScore < 5) {
+    if (player === computer) {
+      return "It's a tie! Good luck next round";
+    } else if (
+      (player == "Rock" && computer == "Scissors") ||
+      (player == "Paper" && computer == "Rock") ||
+      (player == "Scissors" && computer == "Paper")
+    ) {
+      playerScore += 1;
+      return "You Win!";
+    } else if (
+      (player == "Rock" && computer == "Paper") ||
+      (player == "Paper" && computer == "Scissors") ||
+      (player == "Scissors" && computer == "Rock")
+    ) {
+      computerScore += 1;
+      return "You Lose!";
+    }
   }
 }
-// TODO: Fix the playRound function
-
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();

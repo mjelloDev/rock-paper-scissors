@@ -55,3 +55,21 @@ button {
 .card .main p {
   color: #283618;
 }
+
+#playerText {
+  color: #78dae8;
+}
+
+#computerText {
+  color: #d9aad0;
+}
+
+#resultText {
+  color: #1b3d2f;
+}
+
+.gameFont {
+  font-size: 20px;
+  font-weight: 900;
+  font-family: monospace, sans-serif;
+}
