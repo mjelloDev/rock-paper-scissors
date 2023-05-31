@@ -30,7 +30,7 @@ choiceBtns.forEach((button) =>
     computerScoreText.textContent = `Computer: ${computerScore}`;
 
     roundCount++;
-    if (roundCount === 10) {
+    if (roundCount === 11) {
       endGame();
     }
   })

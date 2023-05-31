@@ -80,3 +80,15 @@ button {
   gap: 10em;
   justify-content: center;
 }
+
+#github-logo {
+  max-width: 30px;
+}
+
+a:link,
+a:hover,
+a:visited,
+a:focus {
+  text-decoration: none;
+  color: #fefae0;
+}
