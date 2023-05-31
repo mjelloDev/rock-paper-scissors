@@ -1,3 +1,8 @@
+// 1. Create function to get computer choice and assign it to string rock/paper/scissors
+// 2. Create function to get player choice from the button they choose
+// 3. Create function to compare player choice and computer choice
+// 4. Make a loop while the score is lower than 5 to continue game
+
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3);
   switch (choice) {
@@ -14,8 +19,6 @@ function getComputerChoice() {
 }
 console.log(getComputerChoice());
 
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
 // console.log(playRound(playerSelection, computerSelection));
 
 // function getPlayerChoice() {
@@ -45,3 +48,6 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 // TODO: Fix the playRound function
+
+const playerSelection = getPlayerChoice();
+const computerSelection = getComputerChoice();
