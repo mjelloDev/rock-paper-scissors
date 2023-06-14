@@ -63,16 +63,16 @@ function playRound() {
     roundResult.result = "It's a tie! Good luck next round";
     roundResult.tieScore++;
   } else if (
-    (player == "Rock" && computer == "Scissors") ||
-    (player == "Paper" && computer == "Rock") ||
-    (player == "Scissors" && computer == "Paper")
+    (player === "Rock" && computer === "Scissors") ||
+    (player === "Paper" && computer === "Rock") ||
+    (player === "Scissors" && computer === "Paper")
   ) {
     roundResult.result = "You Win!";
     roundResult.playerScore++; // Increment playerScore
   } else if (
-    (player == "Rock" && computer == "Paper") ||
-    (player == "Paper" && computer == "Scissors") ||
-    (player == "Scissors" && computer == "Rock")
+    (player === "Rock" && computer === "Paper") ||
+    (player === "Paper" && computer === "Scissors") ||
+    (player === "Scissors" && computer === "Rock")
   ) {
     roundResult.result = "You Lose!";
     roundResult.computerScore++; // Increment computerScore
@@ -96,3 +96,4 @@ function endGame() {
   tieScoreText.textContent = "Tie: 0";
   computerScoreText.textContent = "Computer: 0";
 }
+
